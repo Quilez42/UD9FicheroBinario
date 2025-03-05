@@ -71,7 +71,12 @@ public class Main {
                     System.out.println("Introduce el nuevo nombre del alumno");
                     String nom = sc.next();
                     System.out.println("Introduce la nueva edad del alumno");
-                    int edad = sc.nextInt();
+                    int edad;
+                    try{
+                        edad = sc.nextInt();
+                    } catch (NumberFormatException e){
+                        edad=1;
+                    }
                     int op;
                     Curso curso = null;
                     do {
@@ -81,7 +86,12 @@ public class Main {
                                 2. DAW
                                 3. SMR
                                 """);
-                        op = sc.nextInt();
+                        try{
+                            op = sc.nextInt();
+                        } catch (NumberFormatException e){
+                            op=1;
+                        }
+
                         switch (opc) {
                             case 1 -> {
                                 curso = Curso.DAM;
@@ -103,9 +113,19 @@ public class Main {
                             "nombre del profesor");
                     String nom = sc.next();
                     System.out.println("Introduce el nuevo salario del profesor");
-                    int sueldo= sc.nextInt();
+                    int sueldo;
+                    try{
+                        sueldo = sc.nextInt();
+                    } catch (NumberFormatException e){
+                        sueldo=1;
+                    }
                     System.out.println("Introduce la nueva edad del profesor");
-                    int edad = sc.nextInt();
+                    int edad;
+                    try{
+                        edad = sc.nextInt();
+                    } catch (NumberFormatException e){
+                        edad=1;
+                    }
                     Profesor profesor=new Profesor(dni,nom,sueldo,edad);
                     instituto.modificarProfesor(profesor);}
             }

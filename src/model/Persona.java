@@ -65,6 +65,11 @@ public class Persona {
         return dni;
     }
 
+    public void setEdad(int edad) throws IllegalArgumentException {
+        if (edad>=0)
+            this.edad = edad;
+    }
+
     public void setDni(String dni) {
         if (esCorrectoNIF(dni))
             this.dni=dni;
@@ -76,7 +81,10 @@ public class Persona {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombre(String nombre) throws IllegalArgumentException {
+        if (!nombre.isEmpty())
+            this.nombre = nombre;
+        else
+            throw new IllegalArgumentException("El nombre no uede estar vacio");
     }
 }
