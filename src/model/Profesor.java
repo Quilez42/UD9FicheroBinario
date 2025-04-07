@@ -27,4 +27,14 @@ public class Profesor extends Persona implements Serializable {
         else
             this.sueldo=sueldo;
     }
+
+    @Override
+    public String toString() {
+        return "Profesor{" +
+                "DNI"+super.getDni() +
+                "Nombre"+super.getNombre()+
+                "Edad"+super.getEdad()+
+                "sueldo=" + sueldo +
+                '}';
+    }
 }

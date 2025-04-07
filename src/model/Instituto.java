@@ -94,9 +94,9 @@ public class Instituto {
                 }
                 int sueldo=sc.nextInt();
                 //Pedimos el edad
-                System.out.println("Introduce la edad del alumno");
+                System.out.println("Introduce la edad del profesor");
                 while (!sc.hasNextInt()) {
-                    System.out.println("Introduce la edad del alumno");
+                    System.out.println("Introduce la edad del profesor");
                     sc.next();
                 }
                 int edad=sc.nextInt();

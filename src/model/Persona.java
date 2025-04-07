@@ -78,6 +78,10 @@ public class Persona implements Serializable {
             this.dni="SinDNI";
     }
 
+    public int getEdad() {
+        return edad;
+    }
+
     public String getNombre() {
         return nombre;
     }

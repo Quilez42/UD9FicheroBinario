@@ -22,4 +22,13 @@ public class Alumno extends Persona implements Serializable {
         this.curso = curso;
     }
 
+    @Override
+    public String toString() {
+        return "Alumno{" +
+                "DNI"+super.getDni() +
+                "Nombre"+super.getNombre()+
+                "Edad"+super.getEdad()+
+                "curso=" + curso +
+                '}';
+    }
 }
