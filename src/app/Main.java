@@ -5,9 +5,11 @@ import model.Curso;
 import model.Instituto;
 import model.Profesor;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
+
     public static void main(String[] args) {
         Instituto instituto = new Instituto();
         Scanner sc = new Scanner(System.in);
@@ -26,6 +28,10 @@ public class Main {
                     8. Borrar Profesor
                     9. Modificar Alumno
                     10. Modificar Profesor
+                    11. Guardar lista de alumnos
+                    12. Leer lista de alumnos
+                    13. Guardar lista de profesores
+                    14. Leer lista de profesores
                     """);
             opc = sc.nextInt();
             switch (opc) {
@@ -128,6 +134,10 @@ public class Main {
                     }
                     Profesor profesor=new Profesor(dni,nom,sueldo,edad);
                     instituto.modificarProfesor(profesor);}
+                case 11-> instituto.guardarAlumnosArchivo(instituto.getAlumnos(),"alumnos.dat");
+                case 12 -> System.out.println(Arrays.toString(instituto.leerArchivoAlumnos("alumnos.dat")));
+                case 13 -> instituto.guardarProfesoresArchivo(instituto.getProfesores(),"profesor.dat");
+                case 14 -> System.out.println(instituto.leerArchivoProfesores("profesor.dat"));
             }
         }while (opc!=0);
     }

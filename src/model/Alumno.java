@@ -1,6 +1,8 @@
 package model;
 
-public class Alumno extends Persona{
+import java.io.Serializable;
+
+public class Alumno extends Persona implements Serializable {
 
     //PROPIEDADES
     private Curso curso;

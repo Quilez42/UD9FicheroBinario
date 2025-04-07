@@ -1,5 +1,10 @@
 package model;
 
+import java.io.*;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Instituto {
@@ -11,6 +16,9 @@ public class Instituto {
     private Profesor[] profesores;
     private static int maxProfesores=2;
     private int totalProfesores;
+
+    public static final String proFichero ="profesor.dat";
+    public static final String aluFichero="alumnos.dat";
 
     //CONSTRUCTOR
     public Instituto(){
@@ -201,5 +209,66 @@ public class Instituto {
                 nif = false;
         }
         return nif;
+    }
+
+    public static void guardarAlumnosArchivo(Alumno[] alus, String nomArchivo){
+        try (ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream(nomArchivo))) {
+            oos.writeObject(alus);
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public static void guardarProfesoresArchivo(Profesor[] profes, String nomArchivo){
+        try (ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream(nomArchivo))) {
+            oos.writeObject(profes);
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public static Alumno[] leerArchivoAlumnos (String nomArchivo){
+        Alumno[] alus=null;
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(nomArchivo))){
+            Object obj = ois.readObject();
+            if (obj instanceof Alumno[]) {
+                alus=(Alumno[]) obj;
+            }
+        } catch (IOException | ClassNotFoundException e){
+            e.printStackTrace();
+        }
+        return alus;
+    }
+
+    public static Profesor[] leerArchivoProfesores (String nomArchivo){
+        Profesor[] profes=null;
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(nomArchivo))){
+            Object obj = ois.readObject();
+            if (obj instanceof Profesor[]) {
+                profes=(Profesor[]) obj;
+            }
+        } catch (IOException | ClassNotFoundException e){
+            e.printStackTrace();
+        }
+        return profes;
+    }
+
+    public Alumno[] getAlumnos() {
+        return alumnos;
+    }
+
+    public Profesor[] getProfesores() {
+        return profesores;
+    }
+
+    @Override
+    public String toString() {
+        return "Instituto{" +
+                "sc=" + sc +
+                ", alumnos=" + Arrays.toString(alumnos) +
+                ", totalAlumnos=" + totalAlumnos +
+                ", profesores=" + Arrays.toString(profesores) +
+                ", totalProfesores=" + totalProfesores +
+                '}';
     }
 }
